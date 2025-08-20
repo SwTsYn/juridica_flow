@@ -2,7 +2,12 @@ from collections import defaultdict
 from datetime import date
 from fastapi import APIRouter, Depends, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse
+from pathlib import Path
 from fastapi.templating import Jinja2Templates
+
+TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
+templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
+
 from sqlalchemy.orm import Session
 
 from .db import get_db
@@ -369,3 +374,4 @@ def assign_request(
 
     db.commit()
     return partial_priorities(request, db)
+
