@@ -1,0 +1,10 @@
+<table id="usersTable" class="w-full text-sm">
+  <thead><tr class="border-b"><th class="text-left py-2">Nombre</th><th class="text-left">Rol</th></tr></thead>
+  <tbody>
+  {% for u in users %}
+    <tr class="border-b"><td class="py-2">{{u.full_name}}</td><td>{{u.role}}</td></tr>
+  {% else %}
+    <tr><td class="py-2 text-gray-500" colspan="2">Sin usuarios</td></tr>
+  {% endfor %}
+  </tbody>
+</table>

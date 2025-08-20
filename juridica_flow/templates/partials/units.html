@@ -1,0 +1,10 @@
+<table id="unitsTable" class="w-full text-sm">
+  <thead><tr class="border-b"><th class="text-left py-2">Unidad</th></tr></thead>
+  <tbody>
+  {% for x in units %}
+    <tr class="border-b"><td class="py-2">{{x.name}}</td></tr>
+  {% else %}
+    <tr><td class="py-2 text-gray-500">Sin unidades</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
