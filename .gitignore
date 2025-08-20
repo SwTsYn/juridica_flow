@@ -1,43 +1,21 @@
-# Entornos virtuales
-.venv/
-env/
-venv/
-
-# Archivos de cache de Python
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Archivos de compilación
-*.so
+# Entornos
+.venv/
+env/
+venv/
 
-# Archivos de configuración de IDEs
+# IDEs / SO
 .vscode/
 .idea/
-*.swp
-
-# Archivos de logs
-*.log
-
-# Archivos temporales del sistema
 .DS_Store
 Thumbs.db
 
-# Archivos de tests / coverage
-htmlcov/
-.tox/
-.nox/
-coverage.*
-.cache
-
-# Archivos de base de datos local
+# DBs locales
 *.sqlite3
 *.db
 
-# Archivos de despliegue
-*.env
-.env.local
-
-# Archivos de Render / Heroku / etc
-Procfile
