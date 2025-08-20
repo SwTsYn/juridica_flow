@@ -1,8 +1,8 @@
 # app/main.py
 from pathlib import Path
-
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse, Response
 
 from .db import Base, engine
 from .routers import users, units, requests, priorities
@@ -27,6 +27,16 @@ STATIC_DIR = Path(__file__).resolve().parent / "static"
 if STATIC_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
+# Redirección raíz y favicon
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/ui", status_code=307)
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return Response(status_code=204)
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
