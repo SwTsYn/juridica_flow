@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jurídica Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header con menú -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-6">
+          <a href="/ui" class="font-semibold text-xl">Jurídica Flow</a>
+          <a href="/ui" class="text-sm hover:underline {{ 'font-semibold' if active=='home' else '' }}">Inicio</a>
+          <a href="/ui/requests" class="text-sm hover:underline {{ 'font-semibold' if active=='requests' else '' }}">Requerimientos</a>
+          <a href="/ui/users" class="text-sm hover:underline {{ 'font-semibold' if active=='users' else '' }}">Usuarios</a>
+          <a href="/ui/units" class="text-sm hover:underline {{ 'font-semibold' if active=='units' else '' }}">Unidades</a>
+          <a href="/ui/reports" class="text-sm hover:underline {{ 'font-semibold' if active=='reports' else '' }}">Reportería</a>
+        </div>
+        <a href="/docs" class="text-sm text-blue-600 hover:underline">API Docs</a>
+      </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-6">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

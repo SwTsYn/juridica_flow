@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% set active='units' %}
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <section class="bg-white rounded-2xl shadow p-4">
+    <h2 class="font-semibold mb-3">Crear Unidad</h2>
+    <form hx-post="/ui/create_unit" hx-target="#unitsTable" hx-swap="outerHTML" class="space-y-2">
+      <input name="name" required placeholder="Nombre unidad" class="w-full border rounded px-3 py-2" />
+      <button class="bg-blue-600 text-white px-3 py-2 rounded">Guardar</button>
+    </form>
+  </section>
+
+  <section class="bg-white rounded-2xl shadow p-4 lg:col-span-2">
+    <div class="flex items-center justify-between mb-2">
+      <h2 class="font-semibold">Unidades</h2>
+      <button class="text-sm text-blue-600" hx-get="/ui/partials/units" hx-target="#unitsTable" hx-swap="outerHTML">Refrescar</button>
+    </div>
+    {% include "partials/units.html" %}
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}{% set active='home' %}
+{% block content %}
+<h2 class="text-lg font-semibold mb-4">Próximos vencimientos</h2>
+<div class="bg-white rounded-2xl shadow p-4">
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b">
+        <th class="text-left py-2">Fecha</th>
+        <th class="text-left">Req</th>
+        <th class="text-left">Asignados</th>
+        <th class="text-left">Unidad</th>
+        <th class="text-left">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in upcoming %}
+        {% set r = item.request %}
+        <tr class="border-b">
+          <td class="py-2">{{ r.due_date or '-' }}</td>
+          <td>#{{r.id}} · {{r.title}}</td>
+          <td>
+            {% if item.assignees %}
+              {% for a in item.assignees %}
+                <span class="inline-block bg-gray-100 rounded px-2 py-0.5 mr-1 mb-1">{{a.full_name}}</span>
+              {% endfor %}
+            {% else %}
+              <span class="text-gray-500">Sin asignados</span>
+            {% endif %}
+          </td>
+          <td>{{ r.unit.name if r.unit else '-' }}</td>
+          <td class="font-semibold">{{ '%.3f'|format(item.score) }}</td>
+        </tr>
+      {% else %}
+        <tr><td class="py-2 text-gray-500" colspan="5">No hay vencimientos próximos</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
